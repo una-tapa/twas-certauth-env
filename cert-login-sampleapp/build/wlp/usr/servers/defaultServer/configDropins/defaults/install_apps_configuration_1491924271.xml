@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+    <webApplication id="CertLoginSample" location="CertLoginSample.war" name="CertLoginSample"/>
+</server>

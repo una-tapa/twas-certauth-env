@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<liberty-plugin-config version="2.0">
+  <installDirectory>/Users/htakamiy@us.ibm.com/MyGit/una-tapa/guide-gradle-intro/finish/build/wlp</installDirectory>
+  <assemblyArtifact>
+    <groupId>io.openliberty</groupId>
+    <artifactId>openliberty-kernel</artifactId>
+    <version>[19.0.0.9,)</version>
+    <type>zip</type>
+  </assemblyArtifact>
+  <assemblyArchive>/Users/htakamiy@us.ibm.com/.gradle/caches/modules-2/files-2.1/io.openliberty/openliberty-kernel/20.0.0.5/e76cce7851c88c639a9c5a1fd674a3ccf9452920/openliberty-kernel-20.0.0.5.zip</assemblyArchive>
+  <servers>
+    <server>
+      <userDirectory>/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/build/wlp/usr</userDirectory>
+      <serverDirectory>/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/build/wlp/usr/servers/defaultServer</serverDirectory>
+      <serverOutputDirectory>/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/build/wlp/usr/servers/defaultServer</serverOutputDirectory>
+      <serverName>defaultServer</serverName>
+      <configDirectory>/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/src/main/liberty/config</configDirectory>
+      <looseApplication>true</looseApplication>
+      <stripVersion>false</stripVersion>
+      <applications>
+        <application>
+          <appsDirectory>apps</appsDirectory>
+          <applicationFilename>CertLoginSample.war.xml</applicationFilename>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <projectType>war</projectType>
+        </application>
+      </applications>
+    </server>
+  </servers>
+</liberty-plugin-config>

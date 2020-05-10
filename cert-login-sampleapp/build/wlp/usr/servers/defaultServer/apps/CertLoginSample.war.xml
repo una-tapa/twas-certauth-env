@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/src/main/webapp" targetInArchive="/"/>
+    <dir sourceOnDisk="/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/build/classes/java/main" targetInArchive="/WEB-INF/classes/"/>
+    <file sourceOnDisk="/Users/htakamiy@us.ibm.com/MyGit/una-tapa/twas-certauth-env/cert-login-sampleapp/build/tmp/META-INF/MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>

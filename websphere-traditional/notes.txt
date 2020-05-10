@@ -1,0 +1,16 @@
+in src dir 
+javac -cp /opt/IBM/WebSphere/AppServer/plugins/com.ibm.ws.runtime.jar com/example/CustomUserMapping.java
+above src dir
+jar cMf CustomUserMapping.jar -C src .
+https://localhost:9443/ClientCertTest61Web/index.html
+
+
+SRVE0255E: A WebGroup/Virtual Host to handle /CertLoginSample/servlet has not been defined.
+
+SRVE0255E: A WebGroup/Virtual Host to handle localhost:9443 has not been defined.
+
+
+https://localhost:9443/CertLoginSample/servlet
+
+docker build -t testtwas .
+docker run -p 9043:9043 -p 9443:9443 -v ~/waslogs:/logs testtwas

@@ -1,0 +1,15 @@
+/.vscode
+/.gradle
+/bin
+/liberty/build
+/liberty/updates
+/build
+.classpath
+.project
+.settings/
+.DS_Store
+gradle/.DS_Store
+liberty/.DS_Store
+websphere-traditional/.DS_Store
+websphere-traditional/build/
+/trace
