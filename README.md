@@ -42,15 +42,16 @@ This repository consists of 3 directories.
 Creates a docker image that sets up following:
 - Copies sample custom mapping jar into `lib\ext`
 - Configures security custom property `WAS_customUserMappingIMpl` 
-- Configures `client authentication required` for `NodeDefaultSSLSettings` to make server to require certificate login for certificate authentication application. 
+- Configures `client authentication required` for `NodeDefaultSSLSettings` to make server to require certificate login for certificate authentication application. <!-- In the directory, configire.py. On adminconsole, NodeDefaultSSLSettings, QOP Panel Screenshot -->
 - `docker build -t testwas .` to build it
 - `docker run -p 9043:9043 -p 9443:9443 -v ~/waslogs:/logs`  ti start ut, 
 - Hint: `docker exec -it {container_id} /bin/bash` to login to the container. 
-- Currently I need to install the sample app manually. 
-- Then install the key.p12 (in this repo) into the browser. 
+- Currently I need to install the sample app manually. (TODO: automate..)
+- Then install the key.p12 (in this repo) into the browser. (The keystore is from the docker image - nodedefault keystore - `WebAS`)
 - Point to the sample page 
 - The browser asks if I want to send certificate
 - When I say yes, trace shows `localhost` certificate is mapped to `wsadmin`
+- TODO: screenshots
 
 ### Trace
 
@@ -67,5 +68,7 @@ htakamiy@us.ibm.com@Hirokos-MBP server1 %
 
 [Configure Kerberos in WAS](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.5/com.ibm.websphere.base.doc/ae/tsec_kerb_setup.html)  
 [Configure Kerberos in DB2](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0058525.html)
+
+- TODO upload all tWAS files Dropbox\CertificatLogin
 
 -->
