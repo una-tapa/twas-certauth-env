@@ -14,4 +14,4 @@ COPY CustomUserMapping.jar /opt/IBM/WebSphere/AppServer/lib/ext
 RUN chmod a+x /docker-entrypoint.sh
 RUN /work/configure.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+# ENTRYPOINT ["/docker-entrypoint.sh"]

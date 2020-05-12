@@ -25,4 +25,8 @@
     <login-config>
       <auth-method>CLIENT-CERT</auth-method>
     </login-config>
+    <security-role>
+      <description>MyRole</description>
+      <role-name>Manager</role-name>
+    </security-role>
 </web-app>

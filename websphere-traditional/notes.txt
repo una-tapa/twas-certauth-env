@@ -9,8 +9,9 @@ SRVE0255E: A WebGroup/Virtual Host to handle /CertLoginSample/servlet has not be
 
 SRVE0255E: A WebGroup/Virtual Host to handle localhost:9443 has not been defined.
 
+cp ../cert-login-sampleapp/build/libs/CertLoginSample.war .
 
-https://localhost:9443/CertLoginSample/servlet
+https://localhost:9443/CertLoginSample
 
 docker build -t testtwas .
 docker run -p 9043:9043 -p 9443:9443 -v ~/waslogs:/logs testtwas
