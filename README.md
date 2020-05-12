@@ -12,27 +12,24 @@ This repository consists of 3 directories.
     ```
     <auth-method>CLIENT-CERT</auth-method> 
     ```
-    Test URL : https://localhost:9443/CertLoginSample/servlet 
+    Test URL : https://localhost:9443/CertLoginSample
     - To update `src` and comple, run `./gradlew libertyPackage`.
-    - The app is based on https://openliberty.io/guides/gradle-intro.html.
-    - TODO: The app manually installs to tWAS fine but not automatically on docker image. 
-    - TODO: The adminconsole panel does not show user mapping link. Need IBM extention? 
+    - The app is based on https://openliberty.io/guides/gradle-intro.html
 - custom-mapping
    - Users can place custom user mapping jar in `{was_install_dir}/lib/ext` directory just like customTAI or custom LoginModule. 
-        - Place customUserMapping jar under `/lib/ext`
-        - The jar should include user mapping class that implements UserMapping interface: https://www.ibm.com/support/knowledgecenter/SSEQTJ_8.5.5/com.ibm.websphere.javadoc.doc/web/spidocs/com/ibm/websphere/security/package-summary.html?view=embed 
+        - Copy customUserMapping jar under `/lib/ext`
+        - The jar should include user mapping class that implements following UserMapping interface: https://www.ibm.com/support/knowledgecenter/SSEQTJ_8.5.5/com.ibm.websphere.javadoc.doc/web/spidocs/com/ibm/websphere/security/package-summary.html?view=embed 
         - Configure security custom property with the user mapping class name. For example, `WAS_customUserMappingImpl=com.example.CustomUserMapping`.
-        - In this sample directory, to compile CustomUserMapping.java
-        go to `src` directory and run
-        ```
-        javac -cp /opt/IBM/WebSphere/AppServer/plugins/com.ibm.ws.runtime.jar com/example/CustomUserMapping.java
-        ``` 
-        It requires `com.ibm.ws.runtime.jar` from tWAS plugins directory in the classpath. 
-       - To create jar file, go one directory above `src` and run
-        ```
-        # Any jar name is ok
-        jar cMf CustomUserMapping.jar -C src .
-        ```
+        - To compile CustomUserMapping.java
+            - go to `src` directory and run command below. It requires `com.ibm.ws.runtime.jar` from tWAS plugins directory in the classpath. (TODO for me: make it easy to compile this. )
+            ```
+            javac -cp /opt/IBM/WebSphere/AppServer/plugins/com.ibm.ws.runtime.jar com/example/CustomUserMapping.java
+            ```  
+        - To create jar file, go one directory above `src` and run
+            ```
+          # Any jar name is ok
+             jar cMf CustomUserMapping.jar -C src .
+             ```
    - Note: Following is similar interface but it does not apply certificate login. It is for SAML user mapping. 
     https://www.ibm.com/support/knowledgecenter/SS7K4U_9.0.5/com.ibm.websphere.javadoc.doc/web/spidocs/com/ibm/wsspi/security/web/saml/UserMapping.html
    
@@ -43,13 +40,12 @@ Creates a docker image that sets up following:
 - Copies sample custom mapping jar into `lib\ext`
 - Configures security custom property `WAS_customUserMappingIMpl` 
 - Configures `client authentication required` for `NodeDefaultSSLSettings` to make server to require certificate login for certificate authentication application. <!-- In the directory, configire.py. On adminconsole, NodeDefaultSSLSettings, QOP Panel Screenshot -->
-- `docker build -t testwas .` to build it
-- `docker run -p 9043:9043 -p 9443:9443 -v ~/waslogs:/logs`  ti start ut, 
-- Hint: `docker exec -it {container_id} /bin/bash` to login to the container. 
-- Currently I need to install the sample app manually. (TODO: automate..)
-- Then install the key.p12 (in this repo) into the browser. (The keystore is from the docker image - nodedefault keystore - `WebAS`)
-- Point to the sample page 
-- The browser asks if I want to send certificate
+- `docker build -t testwas .` to build the docker image. 
+- `docker run -p 9043:9043 -p 9443:9443 -v ~/waslogs:/logs`  to start the container. 
+- To get on the container,  `docker exec -it {container_id} /bin/bash` 
+- Then install the key.p12 (in this repo) into the browser. (This keystore is from the docker image - nodedefault keystore - `WebAS`)
+- Point to the sample page https://localhost:9443/CertLoginSample
+- The browser asks whether to send certificate or not. 
 - When I say yes, trace shows `localhost` certificate is mapped to `wsadmin`
 - TODO: screenshots
 
@@ -62,7 +58,6 @@ Following is trace snippet from the container above.
 [5/10/20 3:18:26:353 UTC] 000000a1 SystemOut     O   DEBUG: mapCertificateToName: Printing SubjectDN=CN=localhost, OU=DefaultCell01, OU=DefaultNode01, O=IBM, C=US
 [5/10/20 3:18:26:354 UTC] 000000a1 SystemOut     O   DEBUG: Mapping CN=localhost, OU=DefaultCell01, OU=DefaultNode01, O=IBM, C=US to wsadmin
 [5/10/20 3:18:26:355 UTC] 000000a1 SystemOut     O   DEBUG: Exiting mapCertificateToName()  Returning : wsadmin
-htakamiy@us.ibm.com@Hirokos-MBP server1 %
 ```
 <!---
 
