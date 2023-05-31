@@ -74,7 +74,7 @@ public class CustomUserMapping implements UserMapping
         throw new UserMappingException(e.getMessage());
      }
 
-     name = "wsadmin";
+     //name = "wsadmin";
      System.out.println("DEBUG: Mapping " + s + " to " + name);
      System.out.println("DEBUG: Exiting mapCertificateToName()  Returning : " + name);
      return name;
